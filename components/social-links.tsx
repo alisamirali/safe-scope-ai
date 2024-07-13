@@ -2,35 +2,54 @@
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faGithub,
+  faInstagram,
   faYoutube,
+  faTwitter,
   faLinkedin,
+  faTelegram,
 } from "@fortawesome/free-brands-svg-icons";
+import Link from "next/link";
 
 const SocialMediaLinks = () => {
   return (
     <div className="flex flex-row gap-4">
-      <a
-        href="https://github.com/KoushikJit"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <FontAwesomeIcon icon={faGithub} size="2x" />
-      </a>
-      <a
-        href="https://www.youtube.com/channel/UCfKRZUU78XIcQvh1_QsdQyA"
+      <Link
+        href="https://www.youtube.com/@DevGuideAcademy"
         target="_blank"
         rel="noopener noreferrer"
       >
         <FontAwesomeIcon icon={faYoutube} size="2x" />
-      </a>
-      <a
-        href="https://www.linkedin.com/in/koushik-sarkar-iimc/"
+      </Link>
+      <Link
+        href="https://www.linkedin.com/in/dev-alisamir"
         target="_blank"
         rel="noopener noreferrer"
       >
         <FontAwesomeIcon icon={faLinkedin} size="2x" />
-      </a>
+      </Link>
+      <Link
+        href="https://www.instagram.com/alisamir.dev"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FontAwesomeIcon icon={faInstagram} size="2x" />
+      </Link>
+
+      <Link
+        href="https://x.com/dev_alisamir"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FontAwesomeIcon icon={faTwitter} size="2x" />
+      </Link>
+
+      <Link
+        href="https://t.me/the_developer_guide"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FontAwesomeIcon icon={faTelegram} size="2x" />
+      </Link>
     </div>
   );
 };

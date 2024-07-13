@@ -131,101 +131,94 @@ const HomePage = (props: Props) => {
   }, [webcamRef.current, model, mirrored, autoRecordEnabled, runPrediction]);
 
   return (
-    <div className="flex h-screen w-full">
+    <div className="flex flex-col w-full h-screen gap-5 md:flex-row md:gap-0">
       <div className="relative">
-        <div className="relative h-screen">
+        <div className="relative md:h-screen">
           <Webcam
             ref={webcamRef}
             mirrored={mirrored}
-            className="h-full w-full object-contain p-2"
+            className="object-contain w-full h-full p-2"
           />
           <canvas
             ref={canvasRef}
-            className="absolute top-0 left-0 h-full w-full object-contain"
+            className="absolute top-0 left-0 object-contain w-full h-full"
           ></canvas>
         </div>
       </div>
 
-      <div className="flex flex-row flex-1">
-        <div className="border-primary/5 border-2 max-w-xs flex flex-col gap-2 justify-between shadow-md rounded-md p-4">
-          <div className="flex flex-col gap-2">
-            <ModeToggle />
-            <Button
-              variant={"outline"}
-              size={"icon"}
-              onClick={() => {
-                setMirrored((prev) => !prev);
-              }}
-            >
-              <FlipHorizontal />
-            </Button>
+      <div className="flex flex-col flex-wrap flex-1 gap-6 px-2 md:gap-0 md:py-2">
+        <div className="flex flex-row items-center justify-between w-full gap-2 p-4 mx-auto overflow-y-auto border-2 rounded-md shadow-md md:flex-row h-fit border-primary/5">
+          <ModeToggle />
+          <Button
+            variant={"outline"}
+            size={"icon"}
+            onClick={() => {
+              setMirrored((prev) => !prev);
+            }}
+          >
+            <FlipHorizontal />
+          </Button>
 
-            <Separator className="my-2" />
-          </div>
+          {/* <Separator className="hidden my-2 md:block" /> */}
+          <Button
+            variant={"outline"}
+            size={"icon"}
+            onClick={userPromptScreenshot}
+          >
+            <Camera />
+          </Button>
+          <Button
+            variant={isRecording ? "destructive" : "outline"}
+            size={"icon"}
+            onClick={userPromptRecord}
+          >
+            <Video />
+          </Button>
+          {/* <Separator className="hidden my-2 md:block" /> */}
+          <Button
+            variant={autoRecordEnabled ? "destructive" : "outline"}
+            size={"icon"}
+            onClick={toggleAutoRecord}
+          >
+            {autoRecordEnabled ? (
+              <Rings color="white" height={45} />
+            ) : (
+              <PersonStanding />
+            )}
+          </Button>
 
-          <div className="flex flex-col gap-2">
-            <Separator className="my-2" />
-            <Button
-              variant={"outline"}
-              size={"icon"}
-              onClick={userPromptScreenshot}
-            >
-              <Camera />
-            </Button>
-            <Button
-              variant={isRecording ? "destructive" : "outline"}
-              size={"icon"}
-              onClick={userPromptRecord}
-            >
-              <Video />
-            </Button>
-            <Separator className="my-2" />
-            <Button
-              variant={autoRecordEnabled ? "destructive" : "outline"}
-              size={"icon"}
-              onClick={toggleAutoRecord}
-            >
-              {autoRecordEnabled ? (
-                <Rings color="white" height={45} />
-              ) : (
-                <PersonStanding />
-              )}
-            </Button>
-          </div>
+          {/* <Separator className="hidden my-2 md:block" /> */}
 
-          <div className="flex flex-col gap-2">
-            <Separator className="my-2" />
-
-            <Popover>
-              <PopoverTrigger asChild>
-                <Button variant={"outline"} size={"icon"}>
-                  <Volume2 />
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent>
-                <Slider
-                  max={1}
-                  min={0}
-                  step={0.2}
-                  defaultValue={[volume]}
-                  onValueCommit={(val) => {
-                    setVolume(val[0]);
-                    beep(val[0]);
-                  }}
-                />
-              </PopoverContent>
-            </Popover>
-          </div>
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button variant={"outline"} size={"icon"}>
+                <Volume2 />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent>
+              <Slider
+                max={1}
+                min={0}
+                step={0.2}
+                defaultValue={[volume]}
+                onValueCommit={(val) => {
+                  setVolume(val[0]);
+                  beep(val[0]);
+                }}
+              />
+            </PopoverContent>
+          </Popover>
         </div>
 
-        <div className="h-full flex-1 py-4 px-2 overflow-y-scroll">
+        <div className="flex-1 h-full px-2 py-4 overflow-y-auto scrollbar">
           <RenderFeatureHighlightsSection />
         </div>
       </div>
 
       {loading && (
-        <div className="z-50 absolute w-full h-full flex items-center justify-center bg-primary-foreground">
-          Getting things ready . . . <Rings height={50} color="red" />
+        <div className="absolute z-50 flex items-center justify-center w-full h-screen overflow-hidden bg-primary-foreground">
+          Preparing everything...
+          <Rings height={50} color="red" />
         </div>
       )}
     </div>
@@ -293,11 +286,11 @@ const HomePage = (props: Props) => {
           <li>
             <strong>Dark Mode/Sys Theme 🌗</strong>
             <p>Toggle between dark mode and system theme.</p>
-            <Button className="my-2 h-6 w-6" variant={"outline"} size={"icon"}>
+            <Button className="w-6 h-6 my-2" variant={"outline"} size={"icon"}>
               <SunIcon size={14} />
             </Button>{" "}
             /{" "}
-            <Button className="my-2 h-6 w-6" variant={"outline"} size={"icon"}>
+            <Button className="w-6 h-6 my-2" variant={"outline"} size={"icon"}>
               <MoonIcon size={14} />
             </Button>
           </li>
@@ -305,7 +298,7 @@ const HomePage = (props: Props) => {
             <strong>Horizontal Flip ↔️</strong>
             <p>Adjust horizontal orientation.</p>
             <Button
-              className="h-6 w-6 my-2"
+              className="w-6 h-6 my-2"
               variant={"outline"}
               size={"icon"}
               onClick={() => {
@@ -320,7 +313,7 @@ const HomePage = (props: Props) => {
             <strong>Take Pictures 📸</strong>
             <p>Capture snapshots at any moment from the video feed.</p>
             <Button
-              className="h-6 w-6 my-2"
+              className="w-6 h-6 my-2"
               variant={"outline"}
               size={"icon"}
               onClick={userPromptScreenshot}
@@ -332,7 +325,7 @@ const HomePage = (props: Props) => {
             <strong>Manual Video Recording 📽️</strong>
             <p>Manually record video clips as needed.</p>
             <Button
-              className="h-6 w-6 my-2"
+              className="w-6 h-6 my-2"
               variant={isRecording ? "destructive" : "outline"}
               size={"icon"}
               onClick={userPromptRecord}
@@ -348,7 +341,7 @@ const HomePage = (props: Props) => {
               required.
             </p>
             <Button
-              className="h-6 w-6 my-2"
+              className="w-6 h-6 my-2"
               variant={autoRecordEnabled ? "destructive" : "outline"}
               size={"icon"}
               onClick={toggleAutoRecord}
@@ -375,11 +368,7 @@ const HomePage = (props: Props) => {
           </li>
           <Separator />
           <li className="space-y-4">
-            <strong>Share your thoughts 💬 </strong>
             <SocialMediaLinks />
-            <br />
-            <br />
-            <br />
           </li>
         </ul>
       </div>

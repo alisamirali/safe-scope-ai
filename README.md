@@ -50,4 +50,4 @@ To contribute, please fork the repository, create a new branch, make your change
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for more details.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/alisamirali/safe-scope-ai/blob/main/LICENSE) file for more details.

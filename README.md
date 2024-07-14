@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# AI-Enhanced Web Application with Object Detection and Recording ⚡️
 
-## Getting Started
+## Overview
 
-First, run the development server:
+This project is an AI-powered web application designed to perform real-time object detection and recording. It uses advanced machine learning models and a robust frontend framework to identify objects through a webcam feed and offer recording functionalities.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Features
+
+- **Dark Mode/System Theme 🌗:** Toggle between dark mode and system theme for optimal viewing experience.
+- **Horizontal Flip ↔️:** Adjust the horizontal orientation of the video feed.
+- **Take Pictures 📸:** Capture snapshots at any moment from the video feed.
+- **Manual Video Recording 📽️:** Manually record video clips as needed.
+- **Enable/Disable Auto Record 🚫:** Option to enable or disable automatic video recording.
+- **Volume Slider 🔊:** Adjust the volume level of the notifications.
+- **Camera Feed Highlighting 🎨:** Highlights persons in red and other objects in green.
+
+## Installation
+
+1. Clone the repository:
+
+```shell
+git clone https://github.com/alisamirali/safe-scope-ai.git
+cd safe-scope-ai
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+`npm install --legacy-peer-deps`
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+3. Run the application:
 
-## Learn More
+`npm run dev`
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Usage
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- After installing the dependencies and running the application, open your browser and navigate to `http://localhost:3001` to access the app. 
 
-## Deploy on Vercel
+- The webcam feed will be displayed, and object detection will start automatically. 
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Use the controls provided in the UI to start and stop recording, take pictures, and adjust settings such as theme, horizontal orientation, and volume level.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Contributing
+
+We welcome contributions to enhance the functionality and features of this project. 
+
+To contribute, please fork the repository, create a new branch, make your changes, and submit a pull request.
+
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for more details.

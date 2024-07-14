@@ -1,5 +1,7 @@
 # AI-Enhanced Web Application with Object Detection and Recording ⚡️
 
+https://github.com/user-attachments/assets/d7e94b86-5d68-4b02-8ba2-bef51481434f
+
 ## Overview
 
 This project is an AI-powered web application designed to perform real-time object detection and recording. It uses advanced machine learning models and a robust frontend framework to identify objects through a webcam feed and offer recording functionalities.
